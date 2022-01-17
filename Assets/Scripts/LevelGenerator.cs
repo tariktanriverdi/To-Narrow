@@ -29,7 +29,7 @@ public class LevelGenerator : MonoBehaviour
     #region  Unity
     private void Start()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
             float radius = FindRandomRadius();
             float length = FindRandomLength();
@@ -68,7 +68,10 @@ public class LevelGenerator : MonoBehaviour
 
     GameObject LvlComponentInstance(Vector3 position)
     {
-        return Instantiate(lvlComponent, position, lvlComponent.transform.rotation);
+        GameObject obj= Instantiate(lvlComponent, position, lvlComponent.transform.rotation);
+        //assign count of point randomly
+        obj.GetComponent<SpawnPoint>().countOfPoints=Random.RandomRange(1,3);
+        return obj;
     }
     float FindRandomRadius()
     {
