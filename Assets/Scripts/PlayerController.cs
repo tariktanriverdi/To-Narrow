@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     #region  SerializeFields
     [SerializeField] private LayerMask gameObjectsLayer;
     [SerializeField] private float scaleLerpTime = 0.07f;
+    [SerializeField] private UIManager uiManager;
     #endregion
     #region  Public variables
     public float health = 10.0f;
@@ -73,6 +74,11 @@ public class PlayerController : MonoBehaviour
         Camera.main.GetComponent<CameraController>().enabled = false;
 
         Debug.Log("Game Over");
+        uiManager.OpenGameOverPanel();
+        GameManager.Instance.isAlive=false;
+      
+
+
         this.gameObject.SetActive(false);
 
     }
